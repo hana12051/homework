@@ -1,3 +1,177 @@
-@import "./card-component.css";
+@import './card-component.css';
 
 /* 카드 레이아웃 */
+.product-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-width: 600px;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--base-spacing);
+  align-items: center;
+  justify-content: center;
+  min-height: var(--size);
+  padding: var(--large-spacing) var(--x-small-spacing);
+  color: var(--white);
+  text-align: center;
+  background-color: var(--black);
+  margin-bottom: var(--x-small-spacing);
+}
+
+.product__text {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.product__text h2 {
+  font-size: var(--large-text);
+  margin-bottom: var(--small-spacing);
+}
+
+.product__text p {
+  font-size: var(--base-text);
+  line-height: var(--line-normal);
+}
+
+.product__text .release {
+  font-size: var(--small-text);
+  margin-top: var(--small-spacing);
+  margin-bottom: var(--base-spacing);
+}
+
+.product--ipad-air .product__text,
+.product--iphone-15 .product__text,
+.product--mac-book-air .product__text {
+  color: var(--black);
+}
+
+/* 버튼 스타일 */
+.btn {
+  display: inline-block;
+  padding: var(--x-small-spacing) var(--small-spacing); /* 8px 12px */
+  font-size: var(--xx-small-text); /* 12px */
+  font-weight: 500;
+  border-radius: 1000px; /* 완전 둥근 모양 */
+  line-height: 1;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn--blue {
+  background-color: var(--blue-300);
+  color: var(--white);
+}
+
+.btn--blue:hover {
+  background-color: var(--blue-400);
+}
+
+.btn--outline-blue {
+  border: 1px solid var(--blue-300);
+  color: var(--blue-300);
+  background-color: transparent;
+}
+
+.btn--outline-blue:hover {
+  border-color: var(--blue-400);
+  color: var(--blue-400);
+}
+
+.btn--black {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.btn--black:hover {
+  opacity: 0.85;
+}
+
+.btn--white {
+  border: 1px solid var(--gray);
+  color: var(--black);
+  background-color: transparent;
+}
+
+.btn--white:hover {
+  border-color: var(--black);
+}
+
+/* 이미지 영역 (배경 처리 + 해상도 대응) */
+.product__image {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* iPad Pro 전용 이미지 (1x, 2x 대응) */
+
+.product--ipad-pro {
+  /* background: yellowgreen; */
+  background-image: image-set(url('../products/ipad_pro.jpeg') 1x, url('../products/ipad_pro_2x.jpeg') 2x);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.product--ipad-air {
+  /* background: rgb(255, 159, 159); */
+  background-image: image-set(url('../products/ipad_air.jpeg') 1x, url('../products/ipad_air_2x.jpeg') 2x);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.product--iphone-15-pro {
+  background-image: image-set(url('../products/iphone15_pro.jpeg') 1x, url('../products/iphone15_pro_2x.jpeg') 2x);
+  /* background: lightblue; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.product--iphone-15 {
+  background-image: image-set(url('../products/iphone15.jpeg') 1x, url('../products/iphone15_2x.jpeg') 2x);
+  /* background: lightpink; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.product--watch {
+  background-image: image-set(url('../products/apple_watch.jpeg') 1x, url('../products/apple_watch_2x.jpeg') 2x);
+  /* background: lightyellow; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.product--mac-book-air {
+  background-image: image-set(url('../products/macbook_air.jpeg') 1x, url('../products/macbook_air_2x.jpeg') 2x);
+  /* background: lightgray; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.product--air-pods-pro {
+  background-image: image-set(url('../products/airpods_pro.jpeg') 1x, url('../products/airpods_pro_2x.jpeg') 2x);
+  /* background: lightgreen; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 1024px 이상: 두 칼럼으로 배치 */
+@media (min-width: 1024px) {
+  .product-stack {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .btn {
+    font-size: var(--x-small-text); /* 14px */
+  }
+}
